@@ -1,0 +1,17 @@
+<?php $lang=array(
+'pagename' => 'User Login',
+'login' => 'Login Name',
+'password' => 'Password',
+'login_form' => 'Enter your login information',
+'login_submit' => 'Log In',
+'return_pre' => '',
+'return' => 'Return',
+'return_post' => ' to main page.',
+'reg_form' => 'Register new account',
+'reg_submit' => 'Register',
+'reg_check' => 'Repeat Password',
+'error_alreadyexists' => 'User with such login already exist',
+'error_paswordsdontmatch' => "Passwords don't match",
+'error_accountblocked' => 'Your user account is currently blocked',
+'error_loginerror' => 'Your login failed. You might enter nonvalid login entry',
+''); ?>

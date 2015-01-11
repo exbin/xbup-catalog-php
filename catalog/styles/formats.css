@@ -1,0 +1,15 @@
+th {
+	background: lightgray;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.odd {
+	background: #EFEFFF;
+}
+
+.planning {
+	background: #FFFF9F;
+}

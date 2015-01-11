@@ -1,0 +1,10 @@
+.news-title {
+	background-color: #5F5FDF;
+	font-weight: bold;
+	color: white;
+}
+
+.news {
+	background-color: #EFEFFF;
+	padding: 5px;
+}

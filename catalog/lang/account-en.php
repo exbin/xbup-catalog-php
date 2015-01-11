@@ -1,0 +1,17 @@
+<?php $lang=array(
+'pagename' => 'User Account',
+'login' => 'Login',
+'user' => 'User',
+'logout' => 'logout',
+'return_pre' => '',
+'return' => 'Return',
+'return_post' => ' to main page.',
+'submit_ok' => 'Modification stored successfully',
+'error_notlogedin' => 'You are not loged in',
+'error_nomatch' => "Passwords doesn't match",
+'name' => 'Full Name',
+'passwd1' => 'Current password',
+'passwd2' => 'New Password',
+'passwd3' => 'Repeat New Password',
+'submit' => 'Store Modifications',
+''); ?>

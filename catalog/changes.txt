@@ -1,0 +1,13 @@
+Changes in version 0.1.24:
+- Added hdoc to interface
+
+Changes in version 0.1 wr 20:
+- composite update
+
+Changes in version 0.1 wr 19:
+- support for plugins
+- support for panel and line editors
+
+Changes in version 0.1 wr 18:
+- support for files and icons
+

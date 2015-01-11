@@ -1,0 +1,15 @@
+<?php $lang+=array(
+'about' => 'About',
+'browse' => 'Browse',
+'specifications' => 'Specifications',
+'attributes' => 'Attributes', 
+'transformations' => 'Transformations',
+'files' => 'Files',
+'search' => 'Search',
+'error_noitem' => 'Selected item not found',
+'error_unknowtype' => 'Unknown type parameter',
+'error_missingroot' => 'Missing root of selected type',
+'login' => 'Login',
+'user' => 'User',
+'logout' => 'logout',
+''); ?>
