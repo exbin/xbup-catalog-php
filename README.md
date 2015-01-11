@@ -15,6 +15,8 @@ Project page: http://sourceforge.net/projects/xbup
 
 This repository contains PHP implementation of the catalog browser.
 
+Please note, that catalog implementation in PHP is very ugly temporary solution and is supposed to be replaced by Java implementation.
+
 Installing
 ----------
 
