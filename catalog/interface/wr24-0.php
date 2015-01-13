@@ -213,18 +213,18 @@ switch($command) {
     $var_prev += 0;
     $var_file += 0;
     if ($var_file>0) {
-        $file = DB_SimpleQuery('SELECT * FROM XBXFILE item_file WHERE id = '.$var_file.' AND NOT EXISTS(SELECT 1 FROM XBXFILE fl WHERE fl.node_id = item_file.node_id AND fl.id < item_file.id)');
+        $file = DB_SimpleQuery('SELECT *, LENGTH(content) AS size FROM XBXFILE item_file WHERE id = '.$var_file.' AND NOT EXISTS(SELECT 1 FROM XBXFILE fl WHERE fl.node_id = item_file.node_id AND fl.id < item_file.id)');
     } else if (isset($var_name)) {
-        $file = DB_SimpleQuery('SELECT * FROM XBXFILE item_file WHERE node_id = '.$var_node." AND filename = ".htmlspecialchars($var_name)."'");
+        $file = DB_SimpleQuery('SELECT *, LENGTH(content) AS size FROM XBXFILE item_file WHERE node_id = '.$var_node." AND filename = ".htmlspecialchars($var_name)."'");
     } else {
       if ($var_prev>0) {
-        $file = DB_SimpleQuery('SELECT * FROM XBXFILE item_file WHERE node_id = '.$var_node.' AND id > '.$var_prev.' AND NOT EXISTS(SELECT 1 FROM XBXFILE fl WHERE fl.id > '.$var_prev.' AND fl.node_id= item_file.node_id AND fl.id < item_file.id)');
+        $file = DB_SimpleQuery('SELECT *, LENGTH(content) AS size FROM XBXFILE item_file WHERE node_id = '.$var_node.' AND id > '.$var_prev.' AND NOT EXISTS(SELECT 1 FROM XBXFILE fl WHERE fl.id > '.$var_prev.' AND fl.node_id= item_file.node_id AND fl.id < item_file.id)');
       } else {
-        $file = DB_SimpleQuery('SELECT * FROM XBXFILE item_file WHERE node_id = '.$var_node.' AND NOT EXISTS(SELECT 1 FROM XBXFILE fl WHERE fl.node_id= item_file.node_id AND fl.id < item_file.id)');
+        $file = DB_SimpleQuery('SELECT *, LENGTH(content) AS size FROM XBXFILE item_file WHERE node_id = '.$var_node.' AND NOT EXISTS(SELECT 1 FROM XBXFILE fl WHERE fl.node_id= item_file.node_id AND fl.id < item_file.id)');
       }
     }
     if ($file) {
-      if (!$var_debug) echo "id\n".$file['ID']."\nowner\n".$file['NODE_ID']."\nfilename\n".$file['FILENAME']."\n";
+      if (!$var_debug) echo "id\n".$file['ID']."\nowner\n".$file['NODE_ID']."\nfilename\n".$file['FILENAME']."\nsize\n".$file['size']."\n";
     }
     break;
   }
@@ -428,10 +428,16 @@ switch($command) {
   case "filecontent": {
     $var_path = str_replace("'", "''", $var_path);
     $file = DB_SimpleQuery("SELECT * FROM XBXFILE file, XBXSTRI stri, XBITEM item WHERE item.id = file.node_id AND stri.item_id = file.node_id AND ((CONCAT(stri.nodepath,'/',stri.text,'/',file.filename) = '".$var_path."' AND item.owner_id IS NOT NULL) OR (CONCAT('/',file.filename) = '".$var_path."' AND item.owner_id IS NULL))");
-    header("Content-Type: application/octet-stream");
-    header("Content-Disposition: attachment;filename=\"" .$file['FILENAME']. "\"");
-    echo $file['CONTENT'];
-    // SELECT CONCAT(stri.nodepath,'/',stri.text,'/',file.filename) FROM XBXFILE file, XBXSTRI stri WHERE stri.item_id = file.node_id
+    if ($file) {
+      header("Content-Type: application/octet-stream");
+      header("Content-Length: ".strlen($file['CONTENT']));
+      header("Content-Disposition: attachment;filename=\"" .$file['FILENAME']. "\"");
+      echo $file['CONTENT'];
+      exit();
+      // SELECT CONCAT(stri.nodepath,'/',stri.text,'/',file.filename) FROM XBXFILE file, XBXSTRI stri WHERE stri.item_id = file.node_id
+    } else {
+      echo 'File not found';
+    }
     break;
   }
 
@@ -675,6 +681,10 @@ function getFormatSpecRevision($node_id, $node_path, $i, $j) {
     $var_owner = $spec['ID'];
     $var_xbindex = $j;
     compositeCommand("getrev");
+    global $var_id;
+    $var_id = $def['id'];
+    compositeCommand("getname");
+    compositeCommand("getdesc");
   }
 }
 
@@ -762,6 +772,10 @@ function getGroupSpecRevision($node_id, $node_path, $i, $j) {
     $var_owner = $spec['ID'];
     $var_xbindex = $j;
     compositeCommand("getrev");
+    global $var_id;
+    $var_id = $def['id'];
+    compositeCommand("getname");
+    compositeCommand("getdesc");
   }
 }
 
@@ -849,6 +863,10 @@ function getBlockSpecRevision($node_id, $node_path, $i, $j) {
     $var_owner = $spec['ID'];
     $var_xbindex = $j;
     compositeCommand("getrev");
+    global $var_id;
+    $var_id = $def['id'];
+    compositeCommand("getname");
+    compositeCommand("getdesc");
   }
 }
 
