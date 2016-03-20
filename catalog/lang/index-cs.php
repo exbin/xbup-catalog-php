@@ -1,8 +1,8 @@
 <?php $lang=array(
 'pagename' => 'Vítejte',
 'about_legend' => 'O katalogu',
-'about_text' => '<p>Vítejte v experimentální katalogu projektu XBUP (<a href="http://xbup.org/">http://xbup.org</a>).</p>
-<p>Tento katalog slouží pro testování základních vlastností prototypu protolu XBUP a pro ukládání specifikací. Více o katalogu se můžete dočíst na stránce projektu, případně v&nbsp;<a href="http://xbup.org/docs/CS/support/services/webcatalog.html">dokumentaci</a>.</p>',
+'about_text' => '<p>Tento katalog je nyní zastaralý a byl nahrazen katalogem (<a href="http://catalog.exbin.org/">http://catalog.exbin.org</a>).</p>
+<p>Tento katalog slouží pro testování základních vlastností prototypu protolu XBUP a pro ukládání specifikací. Více o katalogu se můžete dočíst na stránce projektu, případně v&nbsp;<a href="http://xbup.exbin.org/docs/CS/support/services/webcatalog.html">dokumentaci</a>.</p>',
 'status_legend' => 'Stav katalogu',
 'status_text' => 'V katalogu jsou nyní uložena následující data:',
 'status_items' => 'Položek specifikace',

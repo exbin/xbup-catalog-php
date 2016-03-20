@@ -1,8 +1,8 @@
 <?php $lang=array(
 'pagename' => 'Welcome',
 'about_legend' => 'About Catalog',
-'about_text' => '<p>Welcome in experimental catalog for XBUP Project (<a href="http://xbup.org/">http://xbup.org</a>).</p>
-<p>This catalog provide environment for testing basic features of XBUP protocol prototype implementation as a storage for specifications. For more information, please visit project'."'".'s page or relevant <a href="http://xbup.org/docs/EN/support/services/webcatalog.html">documentation</a>.</p>',
+'about_text' => '<p>This catalog was deprecated and replaced by <a href="http://catalog.exbin.org/">http://catalog.exbin.org</a>.</p>
+<p>This catalog provide environment for testing basic features of XBUP protocol prototype implementation as a storage for specifications. For more information, please visit project'."'".'s page or relevant <a href="http://xbup.exbin.org/docs/EN/support/services/webcatalog.html">documentation</a>.</p>',
 'status_legend' => 'Catalog Status',
 'status_text' => 'There are following data stored in catalog now:',
 'status_items' => 'Specification items',

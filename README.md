@@ -10,7 +10,7 @@ This should provide following advantages:
  * Flexibility - General framework should provide data transformations/processing and compatibility issues solving capability
  * Comprehensibility - Catalog of data types, metadata, relations and abstraction should allow better understanding of data
 
-Homepage: http://xbup.org  
+Homepage: http://xbup.exbin.org  
 Project page: http://sourceforge.net/projects/xbup  
 
 This repository contains PHP implementation of the catalog browser.

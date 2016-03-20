@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (C) XBUP Project (http://xbup.org)
+ * Copyright (C) ExBin Project (http://exbin.org)
  *
  * This application or library is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public License as
@@ -35,14 +35,14 @@ if (@$var_lang=='cs') {
   $GLOBALS['pl']='';
 }
 
-$GLOBALS['catalog_version'] = 'V.0.1 WR-24';
+$GLOBALS['catalog_version'] = 'V.0.2.0';
 $GLOBALS['catalog_mode'] = 'DEV';
-$GLOBALS['catalog_updated'] = '2015-01-11';
+$GLOBALS['catalog_updated'] = '2016-03-20';
 $GLOBALS['catalog_license'] = 'GNU LGPL';
-$GLOBALS['catalog_author'] = 'XBUP Project';
-$GLOBALS['catalog_copyright'] = '(C) XBUP Project';
+$GLOBALS['catalog_author'] = 'ExBin Project';
+$GLOBALS['catalog_copyright'] = '(C) ExBin Project';
 $GLOBALS['catalog_description'] = 'XBUP Catalog written in PHP';
-$GLOBALS['catalog_homepage'] = 'http://xbup.org';
+$GLOBALS['catalog_homepage'] = 'http://xbup.exbin.org';
 $GLOBALS['catalog_title'] = 'XBUP Catalog';
 ?>"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
