@@ -1,7 +1,7 @@
 XBUP: eXtensible Binary Universal Protocol
 ==========================================
 
-The XBUP Project aims to design and to provide an open-source support for unified general binary data representation format.
+The goal of this project is to design and to provide an open-source support for unified general binary data representation format.
 
 This should provide following advantages:
 
