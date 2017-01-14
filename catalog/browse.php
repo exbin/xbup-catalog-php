@@ -21,7 +21,7 @@
 if (!function_exists('pl')) {
   $GLOBALS['current']="browse.php";
   $target = '';
-  import_request_variables('gP','var_');
+  extract($_GET, EXTR_PREFIX_ALL, 'var'); extract($_POST, EXTR_PREFIX_ALL, 'var');
 
   if (@$var_lang=='cs') { include "lang/browse-cs.php"; } else include "lang/browse-en.php";
   $pagename=@$lang['pagename'];

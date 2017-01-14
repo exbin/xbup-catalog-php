@@ -21,7 +21,7 @@
 
 global $lang;
 if (@$var_lang=='cs') { include "lang/browse-cs.php"; } else include "lang/browse-en.php"; 
-import_request_variables('gP','var_');
+extract($_GET, EXTR_PREFIX_ALL, 'var'); extract($_POST, EXTR_PREFIX_ALL, 'var');
 function pl($text) {
   if ($text) {
     if (@$GLOBALS['pl']) {

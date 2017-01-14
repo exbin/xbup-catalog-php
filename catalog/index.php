@@ -19,7 +19,7 @@
 // PHP Catalog Web Interface: Index Page
 
 $GLOBALS['current']="index.php"; 
-import_request_variables('gP','var_');
+extract($_GET, EXTR_PREFIX_ALL, 'var'); extract($_POST, EXTR_PREFIX_ALL, 'var');
 
 function getspecbyxbpath($path) {
   $maxjoin = 2;// Maximum allowed join depth

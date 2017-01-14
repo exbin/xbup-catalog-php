@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (C) ExBin Project (http://exbin.org)
+ * Copyright (C) XBUP Project (http://xbup.org)
  *
  * This application or library is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public License as
@@ -42,19 +42,19 @@ $DB_LastResults = array();  // Dočasné uchování výsledků
 function DB_Init($host,$user,$password,$name)
 {
   global $db_link, $DB_Tables;
-  $db_link = mysql_connect($host,$user,$password);
-  if ($db_link) {
-    mysql_select_db($name);
-    if (mysql_errno() > 0) {
-      echo 'Database connection error: ' . mysql_errno();
-    }
-    if(mysql_errno()==1049) db_query("CREATE DATABASE $name");
-    $Tables = mysql_list_tables($name);
-    $DB_Tables = array();
-    for($I=0;$I<mysql_num_rows($Tables);$I++) {
-      $DB_Tables[$I] = mysql_tablename($Tables,$I);
-    }
-  }
+  $db_link = mysqli_connect($host,$user,$password, $name);
+//  if ($db_link) {
+//    mysql_select_db($name);
+//    if (mysql_errno() > 0) {
+//      echo 'Database connection error: ' . mysql_errno();
+//    }
+//    if(mysql_errno()==1049) db_query("CREATE DATABASE $name");
+//    $Tables = mysql_list_tables($name);
+//    $DB_Tables = array();
+//    for($I=0;$I<mysql_num_rows($Tables);$I++) {
+//      $DB_Tables[$I] = mysql_tablename($Tables,$I);
+//    }
+//  }
 }
 
 function DB_Close() {
@@ -69,29 +69,29 @@ function DB_Query($query)
   //echo('DB: Požadavek('.$query.')<br>');
   //$DB_LastResults[0] = mysql_query($query);
   //System_ShowArray($DB_LastResults);
-  $db_result = mysql_query($query);
-  if(mysql_error()) echo('DB: Chyba požadavku číslo '.mysql_errno().'!('.mysql_error().')<br>Požadavek: '.$query.'<br>');
+  $db_result = mysqli_query($db_link, $query);
+  if(mysqli_error($db_link)) echo('DB: Chyba požadavku číslo '.mysqli_errno($db_link).'!('.mysqli_error($db_link).')<br>Požadavek: '.$query.'<br>');
 }
 
 // Výběr dalšího řádku
 function DB_Row()
 {
   global $db_result;
-  return(mysql_fetch_array($db_result));
+  return(mysqli_fetch_array($db_result));
 }
 
 function DB_SimpleQuery($query)
 {
   global $db_result,$DB_LastResults;
   DB_Query($query);
-  if (@$db_result) { return(mysql_fetch_array($db_result)); } else return array();
+  if (@$db_result) { return(mysqli_fetch_array($db_result)); } else return array();
 }
 
 // Pocet vracenych radku
 function DB_NumRows()
 {
   global $db_result;
-  return(mysql_num_rows($db_result));
+  return(mysqli_num_rows($db_result));
 }
 
 // Uschova vysledek

@@ -1,5 +1,5 @@
 <?php error_reporting(E_ALL); include 'db.php';
-import_request_variables('gP','var_');
+extract($_GET, EXTR_PREFIX_ALL, 'var'); extract($_POST, EXTR_PREFIX_ALL, 'var');
 global $command_id;
 $command_id = 0;
 

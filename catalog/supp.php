@@ -19,7 +19,7 @@
 // PHP Catalog Web Interface: HTML Documentation Extension
 
 $GLOBALS['current']="supp.php";
-import_request_variables('gP','var_');
+extract($_GET, EXTR_PREFIX_ALL, 'var'); extract($_POST, EXTR_PREFIX_ALL, 'var');
 if (@$var_lang=='cs') { include "lang/supp-cs.php"; } else include "lang/supp-en.php";
 // $GLOBALS['stylesheets']='<link rel="stylesheet" href="styles/news.css" type="text/css" media="screen,projection" />'."\n";
 $pagename=@$lang['pagename'];

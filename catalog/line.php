@@ -19,7 +19,7 @@
 // PHP Catalog Web Interface: Line Editor's Management
 
 $GLOBALS['current']="line.php";
-import_request_variables('gP','var_');
+extract($_GET, EXTR_PREFIX_ALL, 'var'); extract($_POST, EXTR_PREFIX_ALL, 'var');
 if (@$var_lang=='cs') { include "lang/line-cs.php"; } else include "lang/line-en.php";
 // $GLOBALS['stylesheets']='<link rel="stylesheet" href="styles/news.css" type="text/css" media="screen,projection" />'."\n";
 $pagename=@$lang['pagename'];

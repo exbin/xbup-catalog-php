@@ -19,7 +19,7 @@
 // PHP Catalog Web Interface: Account Management
 
 $GLOBALS['current']="account.php";
-import_request_variables('gP','var_');
+extract($_GET, EXTR_PREFIX_ALL, 'var'); extract($_POST, EXTR_PREFIX_ALL, 'var');
 if (@$var_lang=='cs') { include "lang/account-cs.php"; } else include "lang/account-en.php";
 $pagename=@$lang['pagename'];
 include "auth.php"; global $auth; include "include.php";

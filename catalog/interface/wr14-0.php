@@ -1,5 +1,5 @@
 <?php include 'db.php';
-import_request_variables('gP','var_');
+extract($_GET, EXTR_PREFIX_ALL, 'var'); extract($_POST, EXTR_PREFIX_ALL, 'var');
 
 
 function getnodebyxbpath($path) {

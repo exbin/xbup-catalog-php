@@ -19,7 +19,7 @@
 // PHP Catalog Web Interface: File Management
 
 $GLOBALS['current']="search.php";
-import_request_variables('gP','var_');
+extract($_GET, EXTR_PREFIX_ALL, 'var'); extract($_POST, EXTR_PREFIX_ALL, 'var');
 
 if (@$var_lang=='cs') { include "lang/search-cs.php"; } else include "lang/search-en.php";
 $pagename=@$lang['pagename'];

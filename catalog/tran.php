@@ -19,7 +19,7 @@
 // PHP Catalog Web Interface: Transformation's Management
 
 $GLOBALS['current']="tran.php";
-import_request_variables('gP','var_');
+extract($_GET, EXTR_PREFIX_ALL, 'var'); extract($_POST, EXTR_PREFIX_ALL, 'var');
 if (@$var_lang=='cs') { include "lang/tran-cs.php"; } else include "lang/tran-en.php";
 // $GLOBALS['stylesheets']='<link rel="stylesheet" href="styles/news.css" type="text/css" media="screen,projection" />'."\n";
 $pagename=@$lang['pagename'];

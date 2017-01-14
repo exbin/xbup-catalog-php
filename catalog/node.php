@@ -19,7 +19,7 @@
 // PHP Catalog Web Interface: Node Management
 
 $GLOBALS['current']="node.php";
-import_request_variables('gP','var_');
+extract($_GET, EXTR_PREFIX_ALL, 'var'); extract($_POST, EXTR_PREFIX_ALL, 'var');
 if (@$var_lang=='cs') { include "lang/node-cs.php"; } else include "lang/node-en.php";
 $pagename=@$lang['pagename'];
 $dateform='j.n.Y';

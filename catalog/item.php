@@ -19,7 +19,7 @@
 // PHP Catalog Web Interface: Item's Management
 
 $GLOBALS['current']="item.php";
-import_request_variables('gP','var_');
+extract($_GET, EXTR_PREFIX_ALL, 'var'); extract($_POST, EXTR_PREFIX_ALL, 'var');
 
 if (@$var_lang=='cs') { include "lang/item-cs.php"; } else include "lang/item-en.php";
 $pagename=@$lang['pagename'];

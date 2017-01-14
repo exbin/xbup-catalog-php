@@ -19,7 +19,7 @@
 // PHP Catalog Web Interface: Browse items
 
 include 'include-head.php'; include 'db.php';
-import_request_variables('gP','var_');
+extract($_GET, EXTR_PREFIX_ALL, 'var'); extract($_POST, EXTR_PREFIX_ALL, 'var');
 function pl($text) {
   if ($text) {
     if (@$GLOBALS['pl']) {
@@ -129,8 +129,8 @@ if (($item['DTYPE']=='XBFormatSpec')||($item['DTYPE']=='XBGroupSpec')||($item['D
     }
     if ($def['myorder'] == $def_id) {
       if ($def['owner']>0) {
-        $name = DB_SimpleQuery('SELECT * FROM item_name WHERE id = '.$def['SPEC_ID'].' AND lang = '.$itemlang);
-        $desc = DB_SimpleQuery('SELECT * FROM item_desc WHERE id = '.$def['SPEC_ID'].' AND lang = '.$itemlang);
+        $name = DB_SimpleQuery('SELECT * FROM XBXNAME item_name WHERE id = '.$def['SPEC_ID'].' AND lang = '.$itemlang);
+        $desc = DB_SimpleQuery('SELECT * FROM XBXDESC item_desc WHERE id = '.$def['SPEC_ID'].' AND lang = '.$itemlang);
       } else {
         $name = '';
         $desc = '';

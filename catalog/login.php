@@ -19,7 +19,7 @@
 // PHP Catalog Web Interface: Login dialogs
 
 $GLOBALS['current']="login.php"; 
-import_request_variables('gP','var_');
+extract($_GET, EXTR_PREFIX_ALL, 'var'); extract($_POST, EXTR_PREFIX_ALL, 'var');
 if (@$var_lang=='cs') { include "lang/login-cs.php"; } else include "lang/login-en.php";
 
 $pagename=@$lang['pagename'];
@@ -37,8 +37,8 @@ if (isset($var_register)) {
       unset($_SESSION['pwd']);
       session_destroy;
       session_start();
-      session_register('login');
-      session_register('pwd');
+      $SESSION['login'] = $login;
+      $SESSION['pwd'] = $pwd;
       setcookie("LOGIN", $var_reglogin,time()+3600*24*365);
       setcookie("PWD", MD5($var_passwd1),time()+3600*24*365);
       header('Location: account.php');
@@ -56,8 +56,8 @@ if (isset($var_login)) {
     unset($_SESSION['pwd']);
     session_destroy;
     session_start();
-    session_register('login');
-    session_register('pwd');
+    $SESSION['login'] = $login;
+    $SESSION['pwd'] = $pwd;
     setcookie ("LOGIN", $login,time()+3600*24*365);
     setcookie ("PWD", $pwd,time()+3600*24*365);
     $item = DB_SimpleQuery("SELECT * FROM XBXUSERINFO user_info WHERE id=".$auth['ID']);

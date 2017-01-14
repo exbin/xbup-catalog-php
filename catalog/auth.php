@@ -22,8 +22,8 @@ require 'db.php';
 global $auth, $session_notclose;
 if (!session_id()) {
   session_start();
-  session_register('login');
-  session_register('pwd');
+  $_SESSION["login"] = $login;
+  $_SESSION["pwd"] = $pwd;
 }
 
 if (@!$_SESSION["login"]) {

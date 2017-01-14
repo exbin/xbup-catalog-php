@@ -19,7 +19,7 @@
 // PHP Catalog Web Interface: Browse Specifications
 
 include 'include-head.php'; include 'db.php';
-import_request_variables('gP','var_');
+extract($_GET, EXTR_PREFIX_ALL, 'var'); extract($_POST, EXTR_PREFIX_ALL, 'var');
 echo '<div style="font-size: small"><div><div>'."\n";
 if (@$var_lang=='cs') { include "lang/browse-cs.php"; } else include "lang/browse-en.php";
 
