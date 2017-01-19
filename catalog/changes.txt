@@ -1,3 +1,6 @@
+Changes in version 0.2.0:
+- Updated for mysqli
+
 Changes in version 0.1.24:
 - Added hdoc to interface
 

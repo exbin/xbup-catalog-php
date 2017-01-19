@@ -1,39 +1,38 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.7.1
+-- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
--- Počítač: localhost
--- Vygenerováno: Úte 15. zář 2015, 21:50
--- Verze MySQL: 5.1.60
--- Verze PHP: 5.3.8
+-- Host: localhost
+-- Generation Time: Jan 19, 2017 at 08:58 PM
+-- Server version: 10.0.28-MariaDB-0ubuntu0.16.04.1
+-- PHP Version: 7.0.13-0ubuntu0.16.04.1
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Databáze: `xbcatalog-dev`
+-- Database: `xbcatalog-dev`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `SEQUENCE`
+-- Table structure for table `SEQUENCE`
 --
 
-CREATE TABLE IF NOT EXISTS `SEQUENCE` (
+CREATE TABLE `SEQUENCE` (
   `SEQ_NAME` varchar(50) COLLATE utf8_czech_ci NOT NULL,
-  `SEQ_COUNT` decimal(38,0) DEFAULT NULL,
-  PRIMARY KEY (`SEQ_NAME`)
+  `SEQ_COUNT` decimal(38,0) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `SEQUENCE`
+-- Dumping data for table `SEQUENCE`
 --
 
 INSERT INTO `SEQUENCE` (`SEQ_NAME`, `SEQ_COUNT`) VALUES
@@ -42,46 +41,42 @@ INSERT INTO `SEQUENCE` (`SEQ_NAME`, `SEQ_COUNT`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `USER`
+-- Table structure for table `USER`
 --
 
-CREATE TABLE IF NOT EXISTS `USER` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `USER` (
+  `ID` bigint(20) NOT NULL,
   `LOGIN` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
-  `PASSWD` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=1 ;
+  `PASSWD` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `USERINFO`
+-- Table structure for table `USERINFO`
 --
 
-CREATE TABLE IF NOT EXISTS `USERINFO` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `USERINFO` (
+  `ID` bigint(20) NOT NULL,
   `CREATED` date DEFAULT NULL,
   `UPDATED` date DEFAULT NULL,
   `LASTLOGIN` date DEFAULT NULL,
   `CURRLOGIN` date DEFAULT NULL,
-  `USER_ID` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FK_USERINFO_USER_ID` (`USER_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=1 ;
+  `USER_ID` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBCONSDEF`
+-- Table structure for table `XBCONSDEF`
 --
 
-CREATE TABLE IF NOT EXISTS `XBCONSDEF` (
-  `ID` bigint(20) NOT NULL,
-  PRIMARY KEY (`ID`)
+CREATE TABLE `XBCONSDEF` (
+  `ID` bigint(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBCONSDEF`
+-- Dumping data for table `XBCONSDEF`
 --
 
 INSERT INTO `XBCONSDEF` (`ID`) VALUES
@@ -301,20 +296,18 @@ INSERT INTO `XBCONSDEF` (`ID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBITEM`
+-- Table structure for table `XBITEM`
 --
 
-CREATE TABLE IF NOT EXISTS `XBITEM` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `XBITEM` (
+  `ID` bigint(20) NOT NULL,
   `DTYPE` varchar(31) COLLATE utf8_czech_ci DEFAULT NULL,
   `XBINDEX` bigint(20) DEFAULT NULL,
-  `OWNER_ID` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FK_XBITEM_OWNER_ID` (`OWNER_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=1570 ;
+  `OWNER_ID` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBITEM`
+-- Dumping data for table `XBITEM`
 --
 
 INSERT INTO `XBITEM` (`ID`, `DTYPE`, `XBINDEX`, `OWNER_ID`) VALUES
@@ -1130,55 +1123,48 @@ INSERT INTO `XBITEM` (`ID`, `DTYPE`, `XBINDEX`, `OWNER_ID`) VALUES
 (1565, 'XBBlockRev', 0, 1563),
 (1569, 'XBGroupCons', 6, 496),
 (1567, 'XBGroupCons', 5, 496),
-(1568, 'XBBlockRev', 0, 1564);
+(1568, 'XBBlockRev', 0, 1564),
+(1570, 'XBBlockSpec', 18, 29);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBITEMINFO`
+-- Table structure for table `XBITEMINFO`
 --
 
-CREATE TABLE IF NOT EXISTS `XBITEMINFO` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `XBITEMINFO` (
+  `ID` bigint(20) NOT NULL,
   `CREATIONDATE` time DEFAULT NULL,
   `ITEM_ID` bigint(20) DEFAULT NULL,
   `OWNER_ID` bigint(20) DEFAULT NULL,
-  `CREATEDBYUSER_ID` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FK_XBITEMINFO_ITEM_ID` (`ITEM_ID`),
-  KEY `FK_XBITEMINFO_CREATEDBYUSER_ID` (`CREATEDBYUSER_ID`),
-  KEY `FK_XBITEMINFO_OWNER_ID` (`OWNER_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=1 ;
+  `CREATEDBYUSER_ID` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBITEMLIMI`
+-- Table structure for table `XBITEMLIMI`
 --
 
-CREATE TABLE IF NOT EXISTS `XBITEMLIMI` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `XBITEMLIMI` (
+  `ID` bigint(20) NOT NULL,
   `XBINDEX` bigint(20) DEFAULT NULL,
   `OWNER_ID` bigint(20) DEFAULT NULL,
-  `TARGET_ID` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FK_XBITEMLIMI_TARGET_ID` (`TARGET_ID`),
-  KEY `FK_XBITEMLIMI_OWNER_ID` (`OWNER_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=1 ;
+  `TARGET_ID` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBJOINDEF`
+-- Table structure for table `XBJOINDEF`
 --
 
-CREATE TABLE IF NOT EXISTS `XBJOINDEF` (
-  `ID` bigint(20) NOT NULL,
-  PRIMARY KEY (`ID`)
+CREATE TABLE `XBJOINDEF` (
+  `ID` bigint(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBJOINDEF`
+-- Dumping data for table `XBJOINDEF`
 --
 
 INSERT INTO `XBJOINDEF` (`ID`) VALUES
@@ -1270,20 +1256,17 @@ INSERT INTO `XBJOINDEF` (`ID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBNODE`
+-- Table structure for table `XBNODE`
 --
 
-CREATE TABLE IF NOT EXISTS `XBNODE` (
+CREATE TABLE `XBNODE` (
   `ID` bigint(20) NOT NULL,
   `CNAMEORDER` bigint(20) DEFAULT NULL,
-  `CSTRIORDER` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `CNAMEORDER` (`CNAMEORDER`),
-  KEY `CSTRIORDER` (`CSTRIORDER`)
+  `CSTRIORDER` bigint(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBNODE`
+-- Dumping data for table `XBNODE`
 --
 
 INSERT INTO `XBNODE` (`ID`, `CNAMEORDER`, `CSTRIORDER`) VALUES
@@ -1349,23 +1332,19 @@ INSERT INTO `XBNODE` (`ID`, `CNAMEORDER`, `CSTRIORDER`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBNODETREE`
+-- Table structure for table `XBNODETREE`
 --
 
-CREATE TABLE IF NOT EXISTS `XBNODETREE` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `XBNODETREE` (
+  `ID` bigint(20) NOT NULL,
   `DEPTHLEVEL` int(11) NOT NULL,
   `NODE_ID` bigint(20) NOT NULL,
   `OWNER_ID` bigint(20) NOT NULL,
-  `ROOT_ID` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FK_XBNODETREE_OWNER_ID` (`OWNER_ID`),
-  KEY `FK_XBNODETREE_NODE_ID` (`NODE_ID`),
-  KEY `FK_XBNODETREE_ROOT_ID` (`ROOT_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=130 ;
+  `ROOT_ID` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBNODETREE`
+-- Dumping data for table `XBNODETREE`
 --
 
 INSERT INTO `XBNODETREE` (`ID`, `DEPTHLEVEL`, `NODE_ID`, `OWNER_ID`, `ROOT_ID`) VALUES
@@ -1502,17 +1481,16 @@ INSERT INTO `XBNODETREE` (`ID`, `DEPTHLEVEL`, `NODE_ID`, `OWNER_ID`, `ROOT_ID`) 
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBREV`
+-- Table structure for table `XBREV`
 --
 
-CREATE TABLE IF NOT EXISTS `XBREV` (
+CREATE TABLE `XBREV` (
   `ID` bigint(20) NOT NULL,
-  `XBLIMIT` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  `XBLIMIT` bigint(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBREV`
+-- Dumping data for table `XBREV`
 --
 
 INSERT INTO `XBREV` (`ID`, `XBLIMIT`) VALUES
@@ -1620,7 +1598,7 @@ INSERT INTO `XBREV` (`ID`, `XBLIMIT`) VALUES
 (484, 4),
 (488, 0),
 (492, 0),
-(499, 5),
+(499, 7),
 (503, 0),
 (507, 0),
 (511, 0),
@@ -1759,39 +1737,36 @@ INSERT INTO `XBREV` (`ID`, `XBLIMIT`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBROOT`
+-- Table structure for table `XBROOT`
 --
 
-CREATE TABLE IF NOT EXISTS `XBROOT` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `XBROOT` (
+  `ID` bigint(20) NOT NULL,
   `DTYPE` varchar(31) COLLATE utf8_czech_ci DEFAULT NULL,
   `URL` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
   `LASTUPDATE` datetime DEFAULT NULL,
-  `NODE_ID` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FK_XBROOT_NODE_ID` (`NODE_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=102 ;
+  `NODE_ID` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBROOT`
+-- Dumping data for table `XBROOT`
 --
 
 INSERT INTO `XBROOT` (`ID`, `DTYPE`, `URL`, `LASTUPDATE`, `NODE_ID`) VALUES
-(1, 'XBRoot', NULL, '2015-09-15 21:49:31', 10);
+(1, 'XBRoot', NULL, '2016-02-25 22:01:45', 10);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBSPEC`
+-- Table structure for table `XBSPEC`
 --
 
-CREATE TABLE IF NOT EXISTS `XBSPEC` (
-  `ID` bigint(20) NOT NULL,
-  PRIMARY KEY (`ID`)
+CREATE TABLE `XBSPEC` (
+  `ID` bigint(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBSPEC`
+-- Dumping data for table `XBSPEC`
 --
 
 INSERT INTO `XBSPEC` (`ID`) VALUES
@@ -2034,23 +2009,22 @@ INSERT INTO `XBSPEC` (`ID`) VALUES
 (1544),
 (1545),
 (1563),
-(1564);
+(1564),
+(1570);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBSPECDEF`
+-- Table structure for table `XBSPECDEF`
 --
 
-CREATE TABLE IF NOT EXISTS `XBSPECDEF` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `TARGET_ID` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FK_XBSPECDEF_TARGET_ID` (`TARGET_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=1570 ;
+CREATE TABLE `XBSPECDEF` (
+  `ID` bigint(20) NOT NULL,
+  `TARGET_ID` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBSPECDEF`
+-- Dumping data for table `XBSPECDEF`
 --
 
 INSERT INTO `XBSPECDEF` (`ID`, `TARGET_ID`) VALUES
@@ -2362,41 +2336,33 @@ INSERT INTO `XBSPECDEF` (`ID`, `TARGET_ID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBTRAN`
+-- Table structure for table `XBTRAN`
 --
 
-CREATE TABLE IF NOT EXISTS `XBTRAN` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `XBTRAN` (
+  `ID` bigint(20) NOT NULL,
   `OWNER_ID` bigint(20) DEFAULT NULL,
   `TARGET_ID` bigint(20) DEFAULT NULL,
   `LIMIT_ID` bigint(20) DEFAULT NULL,
-  `EXCEPT_ID` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FK_XBTRAN_LIMIT_ID` (`LIMIT_ID`),
-  KEY `FK_XBTRAN_EXCEPT_ID` (`EXCEPT_ID`),
-  KEY `FK_XBTRAN_TARGET_ID` (`TARGET_ID`),
-  KEY `FK_XBTRAN_OWNER_ID` (`OWNER_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=1 ;
+  `EXCEPT_ID` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBXBLOCKLINE`
+-- Table structure for table `XBXBLOCKLINE`
 --
 
-CREATE TABLE IF NOT EXISTS `XBXBLOCKLINE` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `XBXBLOCKLINE` (
+  `ID` bigint(20) NOT NULL,
   `DTYPE` varchar(31) COLLATE utf8_czech_ci DEFAULT NULL,
   `PRIORITY` bigint(20) DEFAULT NULL,
   `BLOCKREV_ID` bigint(20) DEFAULT NULL,
-  `LINE_ID` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FK_XBXBLOCKLINE_LINE_ID` (`LINE_ID`),
-  KEY `FK_XBXBLOCKLINE_BLOCKREV_ID` (`BLOCKREV_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=4 ;
+  `LINE_ID` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBXBLOCKLINE`
+-- Dumping data for table `XBXBLOCKLINE`
 --
 
 INSERT INTO `XBXBLOCKLINE` (`ID`, `DTYPE`, `PRIORITY`, `BLOCKREV_ID`, `LINE_ID`) VALUES
@@ -2407,22 +2373,19 @@ INSERT INTO `XBXBLOCKLINE` (`ID`, `DTYPE`, `PRIORITY`, `BLOCKREV_ID`, `LINE_ID`)
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBXBLOCKPANE`
+-- Table structure for table `XBXBLOCKPANE`
 --
 
-CREATE TABLE IF NOT EXISTS `XBXBLOCKPANE` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `XBXBLOCKPANE` (
+  `ID` bigint(20) NOT NULL,
   `DTYPE` varchar(31) COLLATE utf8_czech_ci DEFAULT NULL,
   `PRIORITY` bigint(20) DEFAULT NULL,
   `BLOCKREV_ID` bigint(20) DEFAULT NULL,
-  `PANE_ID` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FK_XBXBLOCKPANE_PANE_ID` (`PANE_ID`),
-  KEY `FK_XBXBLOCKPANE_BLOCKREV_ID` (`BLOCKREV_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=1020 ;
+  `PANE_ID` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBXBLOCKPANE`
+-- Dumping data for table `XBXBLOCKPANE`
 --
 
 INSERT INTO `XBXBLOCKPANE` (`ID`, `DTYPE`, `PRIORITY`, `BLOCKREV_ID`, `PANE_ID`) VALUES
@@ -2431,22 +2394,18 @@ INSERT INTO `XBXBLOCKPANE` (`ID`, `DTYPE`, `PRIORITY`, `BLOCKREV_ID`, `PANE_ID`)
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBXDESC`
+-- Table structure for table `XBXDESC`
 --
 
-CREATE TABLE IF NOT EXISTS `XBXDESC` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `XBXDESC` (
+  `ID` bigint(20) NOT NULL,
   `TEXT` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
   `ITEM_ID` bigint(20) NOT NULL,
-  `LANG_ID` bigint(20) NOT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `UX_XBXDESC` (`ITEM_ID`,`LANG_ID`),
-  KEY `FK_XBXDESC_ITEM_ID` (`ITEM_ID`),
-  KEY `FK_XBXDESC_LANG_ID` (`LANG_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=997 ;
+  `LANG_ID` bigint(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBXDESC`
+-- Dumping data for table `XBXDESC`
 --
 
 INSERT INTO `XBXDESC` (`ID`, `TEXT`, `ITEM_ID`, `LANG_ID`) VALUES
@@ -2472,20 +2431,18 @@ INSERT INTO `XBXDESC` (`ID`, `TEXT`, `ITEM_ID`, `LANG_ID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBXFILE`
+-- Table structure for table `XBXFILE`
 --
 
-CREATE TABLE IF NOT EXISTS `XBXFILE` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `XBXFILE` (
+  `ID` bigint(20) NOT NULL,
   `FILENAME` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
   `NODE_ID` bigint(20) DEFAULT NULL,
-  `CONTENT` longblob,
-  PRIMARY KEY (`ID`),
-  KEY `FK_XBXFILE_NODE_ID` (`NODE_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=822 ;
+  `CONTENT` longblob
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBXFILE`
+-- Dumping data for table `XBXFILE`
 --
 
 INSERT INTO `XBXFILE` (`ID`, `FILENAME`, `NODE_ID`, `CONTENT`) VALUES
@@ -2509,23 +2466,18 @@ INSERT INTO `XBXFILE` (`ID`, `FILENAME`, `NODE_ID`, `CONTENT`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBXHDOC`
+-- Table structure for table `XBXHDOC`
 --
 
-CREATE TABLE IF NOT EXISTS `XBXHDOC` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `XBXHDOC` (
+  `ID` bigint(20) NOT NULL,
   `ITEM_ID` bigint(20) NOT NULL,
   `LANG_ID` bigint(20) NOT NULL,
-  `DOCFILE_ID` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `UX_XBXHDOC` (`ITEM_ID`,`LANG_ID`),
-  KEY `FK_XBXHDOC_LANG_ID` (`LANG_ID`),
-  KEY `FK_XBXHDOC_ITEM_ID` (`ITEM_ID`),
-  KEY `FK_XBXHDOC_DOCFILE_ID` (`DOCFILE_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=24 ;
+  `DOCFILE_ID` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBXHDOC`
+-- Dumping data for table `XBXHDOC`
 --
 
 INSERT INTO `XBXHDOC` (`ID`, `ITEM_ID`, `LANG_ID`, `DOCFILE_ID`) VALUES
@@ -2536,23 +2488,19 @@ INSERT INTO `XBXHDOC` (`ID`, `ITEM_ID`, `LANG_ID`, `DOCFILE_ID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBXICON`
+-- Table structure for table `XBXICON`
 --
 
-CREATE TABLE IF NOT EXISTS `XBXICON` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `XBXICON` (
+  `ID` bigint(20) NOT NULL,
   `XBINDEX` bigint(20) DEFAULT NULL,
   `OWNER_ID` bigint(20) DEFAULT NULL,
   `MODE_ID` bigint(20) DEFAULT NULL,
-  `ICONFILE_ID` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FK_XBXICON_OWNER_ID` (`OWNER_ID`),
-  KEY `FK_XBXICON_MODE_ID` (`MODE_ID`),
-  KEY `FK_XBXICON_ICONFILE_ID` (`ICONFILE_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=857 ;
+  `ICONFILE_ID` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBXICON`
+-- Dumping data for table `XBXICON`
 --
 
 INSERT INTO `XBXICON` (`ID`, `XBINDEX`, `OWNER_ID`, `MODE_ID`, `ICONFILE_ID`) VALUES
@@ -2565,19 +2513,18 @@ INSERT INTO `XBXICON` (`ID`, `XBINDEX`, `OWNER_ID`, `MODE_ID`, `ICONFILE_ID`) VA
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBXICONMODE`
+-- Table structure for table `XBXICONMODE`
 --
 
-CREATE TABLE IF NOT EXISTS `XBXICONMODE` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `XBXICONMODE` (
+  `ID` bigint(20) NOT NULL,
   `TYPE` bigint(20) DEFAULT NULL,
   `MIME` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
-  `CAPTION` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=3 ;
+  `CAPTION` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBXICONMODE`
+-- Dumping data for table `XBXICONMODE`
 --
 
 INSERT INTO `XBXICONMODE` (`ID`, `TYPE`, `MIME`, `CAPTION`) VALUES
@@ -2587,18 +2534,17 @@ INSERT INTO `XBXICONMODE` (`ID`, `TYPE`, `MIME`, `CAPTION`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBXLANGUAGE`
+-- Table structure for table `XBXLANGUAGE`
 --
 
-CREATE TABLE IF NOT EXISTS `XBXLANGUAGE` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `XBXLANGUAGE` (
+  `ID` bigint(20) NOT NULL,
   `LANGCODE` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
-  `NAME` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=34 ;
+  `NAME` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBXLANGUAGE`
+-- Dumping data for table `XBXLANGUAGE`
 --
 
 INSERT INTO `XBXLANGUAGE` (`ID`, `LANGCODE`, `NAME`) VALUES
@@ -2629,28 +2575,47 @@ INSERT INTO `XBXLANGUAGE` (`ID`, `LANGCODE`, `NAME`) VALUES
 (30, 'en', NULL),
 (31, 'en', NULL),
 (32, 'en', NULL),
-(33, 'en', NULL);
+(33, 'en', NULL),
+(34, 'en', NULL),
+(35, 'en', NULL),
+(36, 'en', NULL),
+(37, 'en', NULL),
+(38, 'en', NULL),
+(39, 'en', NULL),
+(40, 'en', NULL),
+(41, 'en', NULL),
+(42, 'en', NULL),
+(43, 'en', NULL),
+(44, 'en', NULL),
+(45, 'en', NULL),
+(46, 'en', NULL),
+(47, 'en', NULL),
+(48, 'en', NULL),
+(49, 'en', NULL),
+(50, 'en', NULL),
+(51, 'en', NULL),
+(52, 'en', NULL),
+(53, 'en', NULL),
+(54, 'en', NULL),
+(55, 'en', NULL),
+(56, 'en', NULL),
+(57, 'en', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBXNAME`
+-- Table structure for table `XBXNAME`
 --
 
-CREATE TABLE IF NOT EXISTS `XBXNAME` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `XBXNAME` (
+  `ID` bigint(20) NOT NULL,
   `TEXT` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
   `ITEM_ID` bigint(20) NOT NULL,
-  `LANG_ID` bigint(20) NOT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `UX_XBXNAME` (`ITEM_ID`,`LANG_ID`),
-  KEY `FK_XBXNAME_LANG_ID` (`LANG_ID`),
-  KEY `FK_XBXNAME_ITEM_ID` (`ITEM_ID`),
-  KEY `TEXT` (`TEXT`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=1139 ;
+  `LANG_ID` bigint(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBXNAME`
+-- Dumping data for table `XBXNAME`
 --
 
 INSERT INTO `XBXNAME` (`ID`, `TEXT`, `ITEM_ID`, `LANG_ID`) VALUES
@@ -2992,26 +2957,24 @@ INSERT INTO `XBXNAME` (`ID`, `TEXT`, `ITEM_ID`, `LANG_ID`) VALUES
 (1129, 'PriorityPane', 1544, 1),
 (1130, 'Pane', 1545, 1),
 (1137, 'DefaultItemBig', 1563, 1),
-(1138, 'DefaultItemSmall', 1564, 1);
+(1138, 'DefaultItemSmall', 1564, 1),
+(1139, 'Test', 1570, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBXPLUGIN`
+-- Table structure for table `XBXPLUGIN`
 --
 
-CREATE TABLE IF NOT EXISTS `XBXPLUGIN` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `XBXPLUGIN` (
+  `ID` bigint(20) NOT NULL,
   `PLUGININDEX` bigint(20) DEFAULT NULL,
   `OWNER_ID` bigint(20) DEFAULT NULL,
-  `PLUGINFILE_ID` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FK_XBXPLUGIN_PLUGINFILE_ID` (`PLUGINFILE_ID`),
-  KEY `FK_XBXPLUGIN_OWNER_ID` (`OWNER_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=881 ;
+  `PLUGINFILE_ID` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBXPLUGIN`
+-- Dumping data for table `XBXPLUGIN`
 --
 
 INSERT INTO `XBXPLUGIN` (`ID`, `PLUGININDEX`, `OWNER_ID`, `PLUGINFILE_ID`) VALUES
@@ -3022,20 +2985,18 @@ INSERT INTO `XBXPLUGIN` (`ID`, `PLUGININDEX`, `OWNER_ID`, `PLUGINFILE_ID`) VALUE
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBXPLUGLINE`
+-- Table structure for table `XBXPLUGLINE`
 --
 
-CREATE TABLE IF NOT EXISTS `XBXPLUGLINE` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `XBXPLUGLINE` (
+  `ID` bigint(20) NOT NULL,
   `DTYPE` varchar(31) COLLATE utf8_czech_ci DEFAULT NULL,
   `LINEINDEX` bigint(20) DEFAULT NULL,
-  `PLUGIN_ID` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FK_XBXPLUGLINE_PLUGIN_ID` (`PLUGIN_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=889 ;
+  `PLUGIN_ID` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBXPLUGLINE`
+-- Dumping data for table `XBXPLUGLINE`
 --
 
 INSERT INTO `XBXPLUGLINE` (`ID`, `DTYPE`, `LINEINDEX`, `PLUGIN_ID`) VALUES
@@ -3052,20 +3013,18 @@ INSERT INTO `XBXPLUGLINE` (`ID`, `DTYPE`, `LINEINDEX`, `PLUGIN_ID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBXPLUGPANE`
+-- Table structure for table `XBXPLUGPANE`
 --
 
-CREATE TABLE IF NOT EXISTS `XBXPLUGPANE` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `XBXPLUGPANE` (
+  `ID` bigint(20) NOT NULL,
   `DTYPE` varchar(31) COLLATE utf8_czech_ci DEFAULT NULL,
   `PANEINDEX` bigint(20) DEFAULT NULL,
-  `PLUGIN_ID` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FK_XBXPLUGPANE_PLUGIN_ID` (`PLUGIN_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=891 ;
+  `PLUGIN_ID` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBXPLUGPANE`
+-- Dumping data for table `XBXPLUGPANE`
 --
 
 INSERT INTO `XBXPLUGPANE` (`ID`, `DTYPE`, `PANEINDEX`, `PLUGIN_ID`) VALUES
@@ -3079,20 +3038,18 @@ INSERT INTO `XBXPLUGPANE` (`ID`, `DTYPE`, `PANEINDEX`, `PLUGIN_ID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBXSTRI`
+-- Table structure for table `XBXSTRI`
 --
 
-CREATE TABLE IF NOT EXISTS `XBXSTRI` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `XBXSTRI` (
+  `ID` bigint(20) NOT NULL,
   `TEXT` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
   `NODEPATH` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
-  `ITEM_ID` bigint(20) NOT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FK_XBXSTRI_ITEM_ID` (`ITEM_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=1029 ;
+  `ITEM_ID` bigint(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBXSTRI`
+-- Dumping data for table `XBXSTRI`
 --
 
 INSERT INTO `XBXSTRI` (`ID`, `TEXT`, `NODEPATH`, `ITEM_ID`) VALUES
@@ -3219,20 +3176,19 @@ INSERT INTO `XBXSTRI` (`ID`, `TEXT`, `NODEPATH`, `ITEM_ID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBXUSER`
+-- Table structure for table `XBXUSER`
 --
 
-CREATE TABLE IF NOT EXISTS `XBXUSER` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `XBXUSER` (
+  `ID` bigint(20) NOT NULL,
   `LOGIN` varchar(64) COLLATE utf8_czech_ci NOT NULL,
   `PASSWD` varchar(32) COLLATE utf8_czech_ci NOT NULL,
   `EMAIL` varchar(128) COLLATE utf8_czech_ci NOT NULL,
-  `FULLNAME` varchar(128) COLLATE utf8_czech_ci NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=8 ;
+  `FULLNAME` varchar(128) COLLATE utf8_czech_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `XBXUSER`
+-- Dumping data for table `XBXUSER`
 --
 
 INSERT INTO `XBXUSER` (`ID`, `LOGIN`, `PASSWD`, `EMAIL`, `FULLNAME`) VALUES
@@ -3244,20 +3200,369 @@ INSERT INTO `XBXUSER` (`ID`, `LOGIN`, `PASSWD`, `EMAIL`, `FULLNAME`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `XBXUSERINFO`
+-- Table structure for table `XBXUSERINFO`
 --
 
-CREATE TABLE IF NOT EXISTS `XBXUSERINFO` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `XBXUSERINFO` (
+  `ID` bigint(20) NOT NULL,
   `CREATED` date DEFAULT NULL,
   `UPDATED` date DEFAULT NULL,
   `LASTLOGIN` date DEFAULT NULL,
   `CURRLOGIN` date DEFAULT NULL,
-  `USER_ID` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FK_USERINFO_USER_ID` (`USER_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci AUTO_INCREMENT=1 ;
+  `USER_ID` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `SEQUENCE`
+--
+ALTER TABLE `SEQUENCE`
+  ADD PRIMARY KEY (`SEQ_NAME`);
+
+--
+-- Indexes for table `USER`
+--
+ALTER TABLE `USER`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `USERINFO`
+--
+ALTER TABLE `USERINFO`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `FK_USERINFO_USER_ID` (`USER_ID`);
+
+--
+-- Indexes for table `XBCONSDEF`
+--
+ALTER TABLE `XBCONSDEF`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `XBITEM`
+--
+ALTER TABLE `XBITEM`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `FK_XBITEM_OWNER_ID` (`OWNER_ID`);
+
+--
+-- Indexes for table `XBITEMINFO`
+--
+ALTER TABLE `XBITEMINFO`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `FK_XBITEMINFO_ITEM_ID` (`ITEM_ID`),
+  ADD KEY `FK_XBITEMINFO_CREATEDBYUSER_ID` (`CREATEDBYUSER_ID`),
+  ADD KEY `FK_XBITEMINFO_OWNER_ID` (`OWNER_ID`);
+
+--
+-- Indexes for table `XBITEMLIMI`
+--
+ALTER TABLE `XBITEMLIMI`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `FK_XBITEMLIMI_TARGET_ID` (`TARGET_ID`),
+  ADD KEY `FK_XBITEMLIMI_OWNER_ID` (`OWNER_ID`);
+
+--
+-- Indexes for table `XBJOINDEF`
+--
+ALTER TABLE `XBJOINDEF`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `XBNODE`
+--
+ALTER TABLE `XBNODE`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `CNAMEORDER` (`CNAMEORDER`),
+  ADD KEY `CSTRIORDER` (`CSTRIORDER`);
+
+--
+-- Indexes for table `XBNODETREE`
+--
+ALTER TABLE `XBNODETREE`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `FK_XBNODETREE_OWNER_ID` (`OWNER_ID`),
+  ADD KEY `FK_XBNODETREE_NODE_ID` (`NODE_ID`),
+  ADD KEY `FK_XBNODETREE_ROOT_ID` (`ROOT_ID`);
+
+--
+-- Indexes for table `XBREV`
+--
+ALTER TABLE `XBREV`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `XBROOT`
+--
+ALTER TABLE `XBROOT`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `FK_XBROOT_NODE_ID` (`NODE_ID`);
+
+--
+-- Indexes for table `XBSPEC`
+--
+ALTER TABLE `XBSPEC`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `XBSPECDEF`
+--
+ALTER TABLE `XBSPECDEF`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `FK_XBSPECDEF_TARGET_ID` (`TARGET_ID`);
+
+--
+-- Indexes for table `XBTRAN`
+--
+ALTER TABLE `XBTRAN`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `FK_XBTRAN_LIMIT_ID` (`LIMIT_ID`),
+  ADD KEY `FK_XBTRAN_EXCEPT_ID` (`EXCEPT_ID`),
+  ADD KEY `FK_XBTRAN_TARGET_ID` (`TARGET_ID`),
+  ADD KEY `FK_XBTRAN_OWNER_ID` (`OWNER_ID`);
+
+--
+-- Indexes for table `XBXBLOCKLINE`
+--
+ALTER TABLE `XBXBLOCKLINE`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `FK_XBXBLOCKLINE_LINE_ID` (`LINE_ID`),
+  ADD KEY `FK_XBXBLOCKLINE_BLOCKREV_ID` (`BLOCKREV_ID`);
+
+--
+-- Indexes for table `XBXBLOCKPANE`
+--
+ALTER TABLE `XBXBLOCKPANE`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `FK_XBXBLOCKPANE_PANE_ID` (`PANE_ID`),
+  ADD KEY `FK_XBXBLOCKPANE_BLOCKREV_ID` (`BLOCKREV_ID`);
+
+--
+-- Indexes for table `XBXDESC`
+--
+ALTER TABLE `XBXDESC`
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `UX_XBXDESC` (`ITEM_ID`,`LANG_ID`),
+  ADD KEY `FK_XBXDESC_ITEM_ID` (`ITEM_ID`),
+  ADD KEY `FK_XBXDESC_LANG_ID` (`LANG_ID`);
+
+--
+-- Indexes for table `XBXFILE`
+--
+ALTER TABLE `XBXFILE`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `FK_XBXFILE_NODE_ID` (`NODE_ID`);
+
+--
+-- Indexes for table `XBXHDOC`
+--
+ALTER TABLE `XBXHDOC`
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `UX_XBXHDOC` (`ITEM_ID`,`LANG_ID`),
+  ADD KEY `FK_XBXHDOC_LANG_ID` (`LANG_ID`),
+  ADD KEY `FK_XBXHDOC_ITEM_ID` (`ITEM_ID`),
+  ADD KEY `FK_XBXHDOC_DOCFILE_ID` (`DOCFILE_ID`);
+
+--
+-- Indexes for table `XBXICON`
+--
+ALTER TABLE `XBXICON`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `FK_XBXICON_OWNER_ID` (`OWNER_ID`),
+  ADD KEY `FK_XBXICON_MODE_ID` (`MODE_ID`),
+  ADD KEY `FK_XBXICON_ICONFILE_ID` (`ICONFILE_ID`);
+
+--
+-- Indexes for table `XBXICONMODE`
+--
+ALTER TABLE `XBXICONMODE`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `XBXLANGUAGE`
+--
+ALTER TABLE `XBXLANGUAGE`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `XBXNAME`
+--
+ALTER TABLE `XBXNAME`
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `UX_XBXNAME` (`ITEM_ID`,`LANG_ID`),
+  ADD KEY `FK_XBXNAME_LANG_ID` (`LANG_ID`),
+  ADD KEY `FK_XBXNAME_ITEM_ID` (`ITEM_ID`),
+  ADD KEY `TEXT` (`TEXT`);
+
+--
+-- Indexes for table `XBXPLUGIN`
+--
+ALTER TABLE `XBXPLUGIN`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `FK_XBXPLUGIN_PLUGINFILE_ID` (`PLUGINFILE_ID`),
+  ADD KEY `FK_XBXPLUGIN_OWNER_ID` (`OWNER_ID`);
+
+--
+-- Indexes for table `XBXPLUGLINE`
+--
+ALTER TABLE `XBXPLUGLINE`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `FK_XBXPLUGLINE_PLUGIN_ID` (`PLUGIN_ID`);
+
+--
+-- Indexes for table `XBXPLUGPANE`
+--
+ALTER TABLE `XBXPLUGPANE`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `FK_XBXPLUGPANE_PLUGIN_ID` (`PLUGIN_ID`);
+
+--
+-- Indexes for table `XBXSTRI`
+--
+ALTER TABLE `XBXSTRI`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `FK_XBXSTRI_ITEM_ID` (`ITEM_ID`);
+
+--
+-- Indexes for table `XBXUSER`
+--
+ALTER TABLE `XBXUSER`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `XBXUSERINFO`
+--
+ALTER TABLE `XBXUSERINFO`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `FK_USERINFO_USER_ID` (`USER_ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `USER`
+--
+ALTER TABLE `USER`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `USERINFO`
+--
+ALTER TABLE `USERINFO`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `XBITEM`
+--
+ALTER TABLE `XBITEM`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1571;
+--
+-- AUTO_INCREMENT for table `XBITEMINFO`
+--
+ALTER TABLE `XBITEMINFO`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `XBITEMLIMI`
+--
+ALTER TABLE `XBITEMLIMI`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `XBNODETREE`
+--
+ALTER TABLE `XBNODETREE`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
+--
+-- AUTO_INCREMENT for table `XBROOT`
+--
+ALTER TABLE `XBROOT`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+--
+-- AUTO_INCREMENT for table `XBSPECDEF`
+--
+ALTER TABLE `XBSPECDEF`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1570;
+--
+-- AUTO_INCREMENT for table `XBTRAN`
+--
+ALTER TABLE `XBTRAN`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `XBXBLOCKLINE`
+--
+ALTER TABLE `XBXBLOCKLINE`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `XBXBLOCKPANE`
+--
+ALTER TABLE `XBXBLOCKPANE`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1020;
+--
+-- AUTO_INCREMENT for table `XBXDESC`
+--
+ALTER TABLE `XBXDESC`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=997;
+--
+-- AUTO_INCREMENT for table `XBXFILE`
+--
+ALTER TABLE `XBXFILE`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=822;
+--
+-- AUTO_INCREMENT for table `XBXHDOC`
+--
+ALTER TABLE `XBXHDOC`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+--
+-- AUTO_INCREMENT for table `XBXICON`
+--
+ALTER TABLE `XBXICON`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=857;
+--
+-- AUTO_INCREMENT for table `XBXICONMODE`
+--
+ALTER TABLE `XBXICONMODE`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `XBXLANGUAGE`
+--
+ALTER TABLE `XBXLANGUAGE`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+--
+-- AUTO_INCREMENT for table `XBXNAME`
+--
+ALTER TABLE `XBXNAME`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1140;
+--
+-- AUTO_INCREMENT for table `XBXPLUGIN`
+--
+ALTER TABLE `XBXPLUGIN`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=881;
+--
+-- AUTO_INCREMENT for table `XBXPLUGLINE`
+--
+ALTER TABLE `XBXPLUGLINE`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=889;
+--
+-- AUTO_INCREMENT for table `XBXPLUGPANE`
+--
+ALTER TABLE `XBXPLUGPANE`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=891;
+--
+-- AUTO_INCREMENT for table `XBXSTRI`
+--
+ALTER TABLE `XBXSTRI`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1029;
+--
+-- AUTO_INCREMENT for table `XBXUSER`
+--
+ALTER TABLE `XBXUSER`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `XBXUSERINFO`
+--
+ALTER TABLE `XBXUSERINFO`
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

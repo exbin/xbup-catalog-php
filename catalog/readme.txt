@@ -7,7 +7,7 @@ This is experimental implementation of XBUP Catalog written in PHP.
 Homepage: http://xbup.exbin.org
 License: GNU/LGPL (see lgpl-3.0.txt)
 Requires: PHP http://www.php.net/
-          MySQL http://www.mysql.org
+          MariaDB http://mariadb.com/
           Apache Web server (or similar) http://httpd.apache.org/
 
 Settings:

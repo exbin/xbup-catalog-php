@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (C) XBUP Project (http://xbup.org)
+ * Copyright (C) ExBin Project (http://exbin.org)
  *
  * This application or library is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public License as
