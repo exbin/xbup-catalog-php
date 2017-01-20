@@ -37,7 +37,7 @@ if (@$var_lang=='cs') {
 
 $GLOBALS['catalog_version'] = 'V.0.2.0';
 $GLOBALS['catalog_mode'] = '';
-$GLOBALS['catalog_updated'] = '2017-01-19';
+$GLOBALS['catalog_updated'] = '2017-01-20';
 $GLOBALS['catalog_license'] = 'GNU LGPL';
 $GLOBALS['catalog_author'] = 'ExBin Project';
 $GLOBALS['catalog_copyright'] = '(C) ExBin Project';
